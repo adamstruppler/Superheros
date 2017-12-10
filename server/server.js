@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const app = express()
 const SuperHero = require('./models/SuperHero')
+const Villain = require('./models/Villain')
 
 const port = 3001
 app.set('trust proxy', '127.0.0.1')
@@ -53,6 +54,39 @@ app.delete('/api/heroes/:heroId', (req, res) => {
       res.json({error: err})
     } else {
       res.json({msg: 'Deleted', hero})
+    }
+  })
+})
+
+app.post('/api/villains', (req, res) => {
+  const {name, img, nemesis, universe} = req.body
+  const newVillain = {name, img, nemesis, universe}
+  Villain(newVillain).save((err, savedVillain) => {
+    if (err) {
+      res.json({error: err})
+    } else {
+      res.json({msg: 'Created!', data: savedVillain})
+    }
+  })
+})
+
+app.get('/api/villains', (req, res) => {
+  Villain.find((err, villain) => {
+    if (err) {
+      res.json({error: err})
+    } else {
+      res.json({msg: 'Success', villain})
+    }
+  })
+})
+
+app.delete('/api/villains/:villainId', (req, res) => {
+  const deleteId = req.params.villainId
+  Villain.remove({_id: deleteId}, (err, villain) => {
+    if (err) {
+      res.json({error: err})
+    } else {
+      res.json({msg: 'Deleted', villain})
     }
   })
 })

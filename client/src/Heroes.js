@@ -1,4 +1,5 @@
 import React from 'react'
+import HeroCard from './HeroCard'
 
 const Heroes = ({heroes}) => {
   return (
@@ -7,7 +8,13 @@ const Heroes = ({heroes}) => {
       {
         heroes.map(hero => {
           return (
-            <h1>{hero.name}</h1>
+            <HeroCard
+              name={hero.name}
+              superPowers={hero.superPowers}
+              img={hero.img}
+              universe={hero.universe}
+              nemesis={hero.nemesis}
+            />
           )
         })
       }

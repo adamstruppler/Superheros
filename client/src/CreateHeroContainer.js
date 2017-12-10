@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import HeroForm from './HeroForm'
 import $ from 'jquery'
 import {
   withRouter
@@ -37,29 +38,7 @@ class CreateHeroContainer extends Component {
     return (
       <div>
         <h3>Create Hero</h3>
-        <form>
-          <div>
-            <label>Name</label>
-            <input type='text' onChange={this.onNameChange} />
-          </div>
-          <div>
-            <label>SuperPower</label>
-            <input type='text' onChange={this.onSuperPowerChange} />
-          </div>
-          <div>
-            <label>Image</label>
-            <input type='text' onChange={this.onImageChange} />
-          </div>
-          <div>
-            <label>Universe</label>
-            <input type='text' onChange={this.onUniverseChange} />
-          </div>
-          <div>
-            <label>Nemesis</label>
-            <input type='text' onChange={this.onNemesisChange} />
-          </div>
-          <button onClick={this.handleSubmit}>SUBMIT HERO</button>
-        </form>
+        <HeroForm />
       </div>
     )
   }
