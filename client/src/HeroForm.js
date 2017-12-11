@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HeroForm = () => {
+const HeroForm = ({onNameChange, onSuperPowerChange, onImageChange, onUniverseChange, onNemesisChange}) => {
   return (
     <form>
       <div>

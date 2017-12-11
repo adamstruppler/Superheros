@@ -1,5 +1,5 @@
 import React from 'react'
-import VillainCard from 'VillainCard'
+import VillainCard from './VillainCard'
 import PropTypes from 'prop-types'
 
 const Villains = ({villains}) => {

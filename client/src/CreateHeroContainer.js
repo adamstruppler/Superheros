@@ -38,7 +38,13 @@ class CreateHeroContainer extends Component {
     return (
       <div>
         <h3>Create Hero</h3>
-        <HeroForm />
+        <HeroForm
+          onNameChange={this.onNameChange}
+          onImageChange={this.onImageChange}
+          onSuperPowerChange={this.onSuperPowerChange}
+          onNemesisChange={this.onNemesisChange}
+          onUniverseChange={this.onUniverseChange}
+        />
       </div>
     )
   }
