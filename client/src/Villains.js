@@ -1,4 +1,6 @@
 import React from 'react'
+import VillainCard from 'VillainCard'
+import PropTypes from 'prop-types'
 
 const Villains = ({villains}) => {
   return (
@@ -7,12 +9,21 @@ const Villains = ({villains}) => {
       {
         villains.map(villain => {
           return (
-            <h1>{villain.name}</h1>
+            <VillainCard
+              name={villain.name}
+              img={villain.img}
+              universe={villain.universe}
+              nemesis={villain.nemesis}
+            />
           )
         })
       }
     </div>
   )
+}
+
+Villains.propTypes = {
+  villains: PropTypes.string.isRequired
 }
 
 export default Villains

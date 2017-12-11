@@ -1,5 +1,6 @@
 import React from 'react'
 import HeroCard from './HeroCard'
+import PropTypes from 'prop-types'
 
 const Heroes = ({heroes}) => {
   return (
@@ -20,6 +21,10 @@ const Heroes = ({heroes}) => {
       }
     </div>
   )
+}
+
+Heroes.propTypes = {
+  heroes: PropTypes.string.isRequired
 }
 
 export default Heroes
