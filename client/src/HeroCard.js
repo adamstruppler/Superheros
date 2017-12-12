@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const HeroeCard = ({name, superPower, img, universe, nemesis}) => {
+const HeroCard = ({name, superPower, img, universe, nemesis}) => {
   return (
     <div>
       <h1>{name}</h1>
@@ -13,7 +13,7 @@ const HeroeCard = ({name, superPower, img, universe, nemesis}) => {
   )
 }
 
-HeroeCard.propTypes = {
+HeroCard.propTypes = {
   name: PropTypes.string.isRequired,
   superPower: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
@@ -21,4 +21,4 @@ HeroeCard.propTypes = {
   nemesis: PropTypes.string.isRequired
 }
 
-export default HeroeCard
+export default HeroCard

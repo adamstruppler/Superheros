@@ -1,31 +1,41 @@
 import React from 'react'
+import Proptypes from 'prop-types'
 
-const HeroForm = ({onNameChange, onSuperPowerChange, onImageChange, onUniverseChange, onNemesisChange}) => {
+const HeroForm = ({onNameChange, onSuperPowerChange, onImageChange, onUniverseChange, onNemesisChange, handleSubmit}) => {
   return (
     <form>
       <div>
         <label>Name</label>
-        <input type='text' onChange={this.onNameChange} />
+        <input type='text' onChange={onNameChange} />
       </div>
       <div>
         <label>SuperPower</label>
-        <input type='text' onChange={this.onSuperPowerChange} />
+        <input type='text' onChange={onSuperPowerChange} />
       </div>
       <div>
         <label>Image</label>
-        <input type='text' onChange={this.onImageChange} />
+        <input type='text' onChange={onImageChange} />
       </div>
       <div>
         <label>Universe</label>
-        <input type='text' onChange={this.onUniverseChange} />
+        <input type='text' onChange={onUniverseChange} />
       </div>
       <div>
         <label>Nemesis</label>
-        <input type='text' onChange={this.onNemesisChange} />
+        <input type='text' onChange={onNemesisChange} />
       </div>
-      <button onClick={this.handleSubmit}>SUBMIT HERO</button>
+      <button onClick={handleSubmit}>SUBMIT HERO</button>
     </form>
   )
+}
+
+HeroForm.propTypes = {
+  onNameChange: Proptypes.func.isRequired,
+  onImageChange: Proptypes.func.isRequired,
+  onSuperPowerChange: Proptypes.func.isRequired,
+  onUniverseChange: Proptypes.func.isRequired,
+  onNemesisChange: Proptypes.func.isRequired,
+  handleSubmit: Proptypes.func.isRequired
 }
 
 export default HeroForm
