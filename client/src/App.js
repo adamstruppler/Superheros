@@ -19,6 +19,7 @@ class App extends Component {
 
   componentDidMount () {
     this.loadHeroesFromServer()
+    this.loadVillainsFromServer()
   }
 
   deleteHero = (hero) => {
@@ -54,7 +55,7 @@ class App extends Component {
       url: '/api/villains',
       method: 'GET'
     }).done((response) => {
-      this.setState({villains: response.villains})
+      this.setState({villains: response.villain})
     })
   }
 
