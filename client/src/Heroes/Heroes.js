@@ -2,7 +2,7 @@ import React from 'react'
 import HeroCard from './HeroCard'
 import PropTypes from 'prop-types'
 
-const Heroes = ({heroes}) => {
+const Heroes = ({heroes, deleteHero, showUniqueHero}) => {
   return (
     <div>
       <h3>Heroes</h3>
@@ -10,11 +10,9 @@ const Heroes = ({heroes}) => {
         heroes.map(hero => {
           return (
             <HeroCard
-              name={hero.name}
-              superPowers={hero.superPowers}
-              img={hero.img}
-              universe={hero.universe}
-              nemesis={hero.nemesis}
+              hero={hero}
+              deleteHero={deleteHero}
+              showUniqueHero={showUniqueHero}
             />
           )
         })
@@ -24,7 +22,9 @@ const Heroes = ({heroes}) => {
 }
 
 Heroes.propTypes = {
-  heroes: PropTypes.string.isRequired
+  heroes: PropTypes.string.isRequired,
+  deleteHero: PropTypes.func.isRequired,
+  showUniqueHero: PropTypes.func.isRequired
 }
 
 export default Heroes

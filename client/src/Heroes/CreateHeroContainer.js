@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import HeroForm from './HeroForm'
 import $ from 'jquery'
+import PropTypes from 'prop-types'
 import {
   withRouter
 } from 'react-router-dom'
@@ -12,6 +13,11 @@ class CreateHeroContainer extends Component {
     img: undefined,
     universe: undefined,
     nemesis: undefined
+  }
+
+  static propTypes = {
+    loadHeroesFromServer: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired
   }
 
   onNameChange = (e) => this.setState({name: e.target.value})
@@ -44,6 +50,7 @@ class CreateHeroContainer extends Component {
           onSuperPowerChange={this.onSuperPowerChange}
           onNemesisChange={this.onNemesisChange}
           onUniverseChange={this.onUniverseChange}
+          handleSubmit={this.handleSubmit}
         />
       </div>
     )
