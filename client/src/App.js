@@ -5,7 +5,9 @@ import NavBar from './Component/NavBar'
 import $ from 'jquery'
 import CreateHeroContainer from './Heroes/CreateHeroContainer'
 import CreateVillainContainer from './Villains/CreateVillainContainer'
+import HeroContainer from './Heroes/HeroContainer'
 import Villains from './Villains/Villains'
+import EditHeroContainer from './Heroes/EditHeroContainer'
 import {
   BrowserRouter as Router,
   Route
@@ -87,17 +89,19 @@ class App extends Component {
           <NavBar />
           <Route exact path='/' component={Home} />
           <Route path='/create-hero' render={() => <CreateHeroContainer loadHeroesFromServer={this.loadHeroesFromServer} />} />
+          <Route path='/create-villain' render={() => <CreateVillainContainer loadVillainsFromServer={this.loadVillainsFromServer} />} />
           {
             this.state.heroes
               ? <Route path='/heroes' render={() => <Heroes showUniqueHero={this.showUniqueHero} deleteHero={this.deleteHero} heroes={this.state.heroes} />} />
               : 'No Hero'
           }
-          <Route path='/create-villain' render={() => <CreateVillainContainer loadVillainsFromServer={this.loadVillainsFromServer} />} />
+          <Route path='/hero/:heroId' render={() => <HeroContainer />} />
           {
             this.state.villains
               ? <Route path='/villains' render={() => <Villains showUniqueVillain={this.showUniqueVillain} deleteVillain={this.deleteVillain} villains={this.state.villains} />} />
               : 'No Villain'
           }
+          <Route path='/edit-hero/:heroId' render={() => <EditHeroContainer />} />
         </div>
       </Router>
     )

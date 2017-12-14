@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 
 const HeroCard = ({deleteHero, hero, showUniqueHero}) => {
   return (
@@ -11,6 +12,7 @@ const HeroCard = ({deleteHero, hero, showUniqueHero}) => {
       <h1>{hero.nemesis}</h1>
       <button onClick={() => deleteHero(hero)}>Delete</button>
       <button onClick={() => showUniqueHero(hero)}>Hero Information</button>
+      <Link to={`/hero/${hero._id}`}>View Hero</Link>
     </div>
   )
 }
