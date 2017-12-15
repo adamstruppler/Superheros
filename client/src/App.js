@@ -8,6 +8,7 @@ import CreateVillainContainer from './Villains/CreateVillainContainer'
 import HeroContainer from './Heroes/HeroContainer'
 import Villains from './Villains/Villains'
 import EditHeroContainer from './Heroes/EditHeroContainer'
+import VillainContainer from './Villains/VillainContainer'
 import {
   BrowserRouter as Router,
   Route
@@ -73,6 +74,7 @@ class App extends Component {
   }
 
   showUniqueVillain = (villain) => {
+    console.log('Villain', villain)
     $.ajax({
       url: `/api/villains/${villain._id}`,
       method: 'GET'
@@ -102,6 +104,7 @@ class App extends Component {
               : 'No Villain'
           }
           <Route path='/edit-hero/:heroId' render={() => <EditHeroContainer />} />
+          <Route path='/villain/:villainId' render={() => <VillainContainer />} />
         </div>
       </Router>
     )

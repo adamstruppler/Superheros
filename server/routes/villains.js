@@ -27,6 +27,18 @@ Router.route('/api/villains')
   })
 
 Router.route('/api/villains/:villainId')
+  .get((req, res) => {
+    const villainId = req.params.villainId
+    Villain.findById({_id: villainId}, (err, villain) => {
+      if (err) {
+        res.json({error: err})
+      } else {
+        res.json({msg: 'Found', villain})
+      }
+    })
+  })
+
+Router.route('/api/villains/:villainId')
   .delete((req, res) => {
     const deleteId = req.params.villainId
     Villain.remove({_id: deleteId}, (err, villain) => {
