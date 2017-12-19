@@ -6,7 +6,7 @@ const VillainCard = ({deleteVillain, villain, showUniqueVillain}) => {
   return (
     <div>
       <h1>{villain.name}</h1>
-      <h1>{villain.img}</h1>
+      <img src={villain.img} />
       <h1>{villain.universe}</h1>
       <h1>{villain.nemesis}</h1>
       <button onClick={() => deleteVillain(villain)}>Delete</button>

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 
 const VillainInfo = ({villain}) => {
   return (
@@ -8,6 +9,7 @@ const VillainInfo = ({villain}) => {
       <h3>{villain.universe}</h3>
       <h3>{villain.nemesis}</h3>
       <img src={villain.img} />
+      <Link to={`/edit-villain/${villain._id}`}>Edit Villain</Link>
     </div>
   )
 }

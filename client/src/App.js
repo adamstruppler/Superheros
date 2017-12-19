@@ -9,6 +9,7 @@ import HeroContainer from './Heroes/HeroContainer'
 import Villains from './Villains/Villains'
 import EditHeroContainer from './Heroes/EditHeroContainer'
 import VillainContainer from './Villains/VillainContainer'
+import EditVillainContainer from './Villains/EditVillainContainer'
 import {
   BrowserRouter as Router,
   Route
@@ -103,8 +104,9 @@ class App extends Component {
               ? <Route path='/villains' render={() => <Villains showUniqueVillain={this.showUniqueVillain} deleteVillain={this.deleteVillain} villains={this.state.villains} />} />
               : 'No Villain'
           }
-          <Route path='/edit-hero/:heroId' render={() => <EditHeroContainer />} />
           <Route path='/villain/:villainId' render={() => <VillainContainer />} />
+          <Route path='/edit-hero/:heroId' render={() => <EditHeroContainer />} />
+          <Route path='/edit-villain:villainId' render={() => <EditVillainContainer />} />
         </div>
       </Router>
     )
