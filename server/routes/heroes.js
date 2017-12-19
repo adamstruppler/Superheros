@@ -61,7 +61,7 @@ Router.route('/api/heroes/:heroId')
         hero.name = req.body.name ? req.body.name : hero.name
         hero.superPower = req.body.superPower ? req.body.superPower : hero.superPower
         hero.img = req.body.img ? req.body.img : hero.img
-        hero.nemesis = req.body.nemesis ? req.body.nemesis : hero.img
+        hero.nemesis = req.body.nemesis ? req.body.nemesis : hero.nemesis
         hero.universe = req.body.universe ? req.body.universe : hero.universe
 
         hero.save((err, updatedHero) => {

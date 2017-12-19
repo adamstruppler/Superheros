@@ -2,17 +2,46 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
+const style = {
+  constainer: {
+    border: '3px solid black',
+    display: 'flex',
+    flexDirection: 'column',
+    borderRadius: '10px',
+    margin: '2%',
+    background: '#2c3e50'
+  },
+  info: {
+    color: '#d35400',
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  button: {
+    border: 'none',
+    color: 'white',
+    padding: '15px 32px',
+    textAlign: 'center',
+    textDecoration: 'none',
+    display: 'inline-block',
+    fontSize: '16px'
+  }
+}
+
 const HeroCard = ({deleteHero, hero, showUniqueHero}) => {
   return (
-    <div>
-      <h1>{hero.name}</h1>
-      <h1>{hero.superPower}</h1>
-      <img src={hero.img} />
-      <h1>{hero.universe}</h1>
-      <h1>{hero.nemesis}</h1>
-      <button onClick={() => deleteHero(hero)}>Delete</button>
-      <button onClick={() => showUniqueHero(hero)}>Hero Information</button>
-      <Link to={`/hero/${hero._id}`}>View Hero</Link>
+    <div style={style.constainer}>
+      <div>
+        <h1 style={style.info}>{hero.name}</h1>
+        <h1 style={style.info}>{hero.superPower}</h1>
+        <h1 style={style.info}>{hero.universe}</h1>
+        <h1 style={style.info}>{hero.nemesis}</h1>
+        <img style={style.info} src={hero.img} />
+      </div>
+      <div style={style.button}>
+        <button onClick={() => deleteHero(hero)}>Delete</button>
+        <button onClick={() => showUniqueHero(hero)}>Hero Information</button>
+        <Link to={`/hero/${hero._id}`}>View Hero</Link>
+      </div>
     </div>
   )
 }

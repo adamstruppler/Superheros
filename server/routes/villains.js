@@ -50,4 +50,28 @@ Router.route('/api/villains/:villainId')
     })
   })
 
+Router.route('/api/villains/:villainId')
+  .put((req, res) => {
+    const editVillainId = req.params.villainId
+    Villain.findById({_id: editVillainId}, (err, villain) => {
+      if (err) {
+        console.log('ERROR', err)
+        res.json({error: err})
+      } else {
+        villain.name = req.body.name ? req.body.name : villain.name
+        villain.img = req.body.img ? req.body.img : villain.img
+        villain.nemesis = req.body.nemesis ? req.body.nemesis : villain.nemesis
+        villain.universe = req.body.universe ? req.body.universe : villain.universe
+
+        villain.save((err, updatedVillain) => {
+          if (err) {
+            res.json({error: err})
+          } else {
+            res.json({msg: 'Successfully Updated', data: updatedVillain})
+          }
+        })
+      }
+    })
+  })
+
 module.exports = Router

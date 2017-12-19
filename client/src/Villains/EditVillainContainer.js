@@ -38,7 +38,7 @@ class EditVillainContainer extends Component {
     }).done((response) => {
       console.log('Res from Put', response)
       alert(`Villain ${response.data.name} was updated`)
-      this.props.history.push(`/villain/${response.data._id}`)
+      this.props.history.push(`/villain/${response.villain._id}`)
     })
   }
 

@@ -4,7 +4,7 @@ import Proptypes from 'prop-types'
 const EditVillainForm = ({
   name, img, universe, nemesis,
   onNameChange, onImageChange,
-  onUniverseChange, onNemesisChange, submitHeroToServer}) =>
+  onUniverseChange, onNemesisChange, submitVillainToServer}) =>
   (
     <form>
       <div>
@@ -23,7 +23,7 @@ const EditVillainForm = ({
         <label>Nemesis</label>
         <input value={nemesis} onChange={onNemesisChange} />
       </div>
-      <button onClick={submitHeroToServer}>Submit</button>
+      <button onClick={submitVillainToServer}>Submit</button>
     </form>
   )
 
@@ -36,7 +36,7 @@ EditVillainForm.propTypes = {
   onImageChange: Proptypes.func.isRequired,
   onNemesisChange: Proptypes.func.isRequired,
   onUniverseChange: Proptypes.func.isRequired,
-  submitHeroToServer: Proptypes.func.isRequired
+  submitVillainToServer: Proptypes.func.isRequired
 }
 
 export default EditVillainForm

@@ -3,26 +3,45 @@ import {
   Link
 } from 'react-router-dom'
 
-const navStyle = {
+const style = {
   container: {
-    border: '3px solid black',
     display: 'flex',
     padding: '10px',
-    background: '#30cfd0',
+    background: '#2c3e50',
     justifyContent: 'space-around',
     borderRadius: '10px'
+  },
+  nav: {
+    width: '50%',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignContent: 'center'
+  },
+  link: {
+    textDecoration: 'none',
+    color: '#7f8c8d',
+    marginLeft: '3%',
+    marginRight: '3%'
+  },
+  title: {
+    color: '#d35400'
   }
 }
 
 const NavBar = () => {
   return (
-    <nav style={navStyle.container}>
-      <Link to='/'>Home</Link>
-      <Link to='/heroes'>Heroes</Link>
-      <Link to='/create-hero'>Create Hero</Link>
-      <Link to='/villains'>Villains</Link>
-      <Link to='/create-villain'>Create Villain</Link>
-    </nav>
+    <div style={style.container}>
+      <div style={style.title}>
+        <h1>Heroes & Villains</h1>
+      </div>
+      <nav style={style.nav}>
+        <Link style={style.link} to='/'>Home</Link>
+        <Link style={style.link} to='/heroes'>Heroes</Link>
+        <Link style={style.link} to='/create-hero'>Create Hero</Link>
+        <Link style={style.link} to='/villains'>Villains</Link>
+        <Link style={style.link} to='/create-villain'>Create Villain</Link>
+      </nav>
+    </div>
   )
 }
 
