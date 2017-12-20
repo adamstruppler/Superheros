@@ -1,7 +1,7 @@
 import React from 'react'
 import Proptypes from 'prop-types'
 
-const VillainForm = ({onNameChange, onImageChange, onUniverseChange, onNemesisChange, handleSubmit}) => {
+const VillainForm = ({onNameChange, onImageChange, onUniverseChange, onNemesisChange, handleSubmit, heroes}) => {
   return (
     <form>
       <div>
@@ -18,7 +18,14 @@ const VillainForm = ({onNameChange, onImageChange, onUniverseChange, onNemesisCh
       </div>
       <div>
         <label>Nemesis</label>
-        <input type='text' onChange={onNemesisChange} />
+        <select onChange={onNemesisChange}>
+          <option>Nothing in here</option>
+          {
+            heroes.map(hero => {
+              return <option value={hero._id}>{hero.name}</option>
+            })
+          }
+        </select>
       </div>
       <button onClick={handleSubmit}>SUBMIT VILLAIN</button>
     </form>
@@ -30,7 +37,8 @@ VillainForm.propTypes = {
   onImageChange: Proptypes.func.isRequired,
   onUniverseChange: Proptypes.func.isRequired,
   onNemesisChange: Proptypes.func.isRequired,
-  handleSubmit: Proptypes.func.isRequired
+  handleSubmit: Proptypes.func.isRequired,
+  heroes: Proptypes.array.isRequired
 }
 
 export default VillainForm

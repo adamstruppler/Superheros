@@ -4,7 +4,7 @@ import Proptypes from 'prop-types'
 const EditVillainForm = ({
   name, img, universe, nemesis,
   onNameChange, onImageChange,
-  onUniverseChange, onNemesisChange, submitVillainToServer}) =>
+  onUniverseChange, onNemesisChange, submitVillainToServer, heroes}) =>
   (
     <form>
       <div>
@@ -21,7 +21,14 @@ const EditVillainForm = ({
       </div>
       <div>
         <label>Nemesis</label>
-        <input value={nemesis} onChange={onNemesisChange} />
+        <select onChange={onNemesisChange}>
+          <option>Nothing in here</option>
+          {
+            heroes.map(hero => {
+              return <option value={hero._id}>{hero.name}</option>
+            })
+          }
+        </select>
       </div>
       <button onClick={submitVillainToServer}>Submit</button>
     </form>
@@ -36,7 +43,8 @@ EditVillainForm.propTypes = {
   onImageChange: Proptypes.func.isRequired,
   onNemesisChange: Proptypes.func.isRequired,
   onUniverseChange: Proptypes.func.isRequired,
-  submitVillainToServer: Proptypes.func.isRequired
+  submitVillainToServer: Proptypes.func.isRequired,
+  heroes: Proptypes.array.isRequired
 }
 
 export default EditVillainForm

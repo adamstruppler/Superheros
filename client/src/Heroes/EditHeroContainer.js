@@ -80,6 +80,7 @@ class EditHeroContainer extends Component {
               onNemesisChange={this.onNemesisChange}
               onUniverseChange={this.onUniverseChange}
               submitHeroToServer={this.submitHeroToServer}
+              villains={this.props.villains}
             />
             : <h1> Loading....</h1>
         }

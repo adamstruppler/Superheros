@@ -48,6 +48,7 @@ class CreateVillainContainer extends Component {
           onNemesisChange={this.onNemesisChange}
           onUniverseChange={this.onUniverseChange}
           handleSubmit={this.handleSubmit}
+          heroes={this.props.heroes}
         />
       </div>
     )

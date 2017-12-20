@@ -36,9 +36,8 @@ class EditVillainContainer extends Component {
       method: 'PUT',
       data: villain
     }).done((response) => {
-      console.log('Res from Put', response)
       alert(`Villain ${response.data.name} was updated`)
-      this.props.history.push(`/villain/${response.villain._id}`)
+      this.props.history.push(`/villain/${response.data._id}`)
     })
   }
 
@@ -47,7 +46,6 @@ class EditVillainContainer extends Component {
       url: `/api/villains/${this.props.match.params.villainId}`,
       method: 'GET'
     }).done((response) => {
-      console.log('Hero on edit page', response)
       const {name, img, nemesis, universe} = response.villain
       this.setState({
         name,
@@ -76,6 +74,7 @@ class EditVillainContainer extends Component {
               onNemesisChange={this.onNemesisChange}
               onUniverseChange={this.onUniverseChange}
               submitVillainToServer={this.submitVillainToServer}
+              heroes={this.props.heroes}
             />
             : <h1> Loading....</h1>
         }

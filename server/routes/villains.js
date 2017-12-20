@@ -17,19 +17,23 @@ Router.route('/api/villains')
 
 Router.route('/api/villains')
   .get((req, res) => {
-    Villain.find((err, villain) => {
-      if (err) {
-        res.json({error: err})
-      } else {
-        res.json({msg: 'Success', villain})
-      }
-    })
+    Villain.find()
+      .populate('nemesis')
+      .exec((err, villain) => {
+        if (err) {
+          res.json({error: err})
+        } else {
+          res.json({msg: 'Success', villain})
+        }
+      })
   })
 
 Router.route('/api/villains/:villainId')
   .get((req, res) => {
     const villainId = req.params.villainId
-    Villain.findById({_id: villainId}, (err, villain) => {
+    Villain.findById({_id: villainId})
+    .populate('nemesis')
+    .exec((err, villain) => {
       if (err) {
         res.json({error: err})
       } else {

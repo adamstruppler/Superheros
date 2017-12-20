@@ -50,6 +50,7 @@ class App extends Component {
       url: '/api/heroes',
       method: 'GET'
     }).done((response) => {
+      console.log('LOAD HEROES', response)
       this.setState({heroes: response.heroes})
     })
   }
@@ -91,8 +92,16 @@ class App extends Component {
         <div>
           <NavBar />
           <Route exact path='/' component={Home} />
-          <Route path='/create-hero' render={() => <CreateHeroContainer loadHeroesFromServer={this.loadHeroesFromServer} />} />
-          <Route path='/create-villain' render={() => <CreateVillainContainer loadVillainsFromServer={this.loadVillainsFromServer} />} />
+          {
+            this.state.villains
+              ? <Route path='/create-hero' render={() => <CreateHeroContainer villains={this.state.villains} loadHeroesFromServer={this.loadHeroesFromServer} />} />
+              : 'No Nemesis Yet'
+          }
+          {
+            this.state.heroes
+              ? <Route path='/create-villain' render={() => <CreateVillainContainer heroes={this.state.heroes} loadVillainsFromServer={this.loadVillainsFromServer} />} />
+              : 'No Nemesis Yet'
+          }
           {
             this.state.heroes
               ? <Route path='/heroes' render={() => <Heroes showUniqueHero={this.showUniqueHero} deleteHero={this.deleteHero} heroes={this.state.heroes} />} />
@@ -105,8 +114,16 @@ class App extends Component {
               : 'No Villain'
           }
           <Route path='/villain/:villainId' render={() => <VillainContainer />} />
-          <Route path='/edit-hero/:heroId' render={() => <EditHeroContainer />} />
-          <Route path='/edit-villain:villainId' render={() => <EditVillainContainer />} />
+          {
+            this.state.villains
+              ? <Route path='/edit-hero/:heroId' render={() => <EditHeroContainer villains={this.state.villains} />} />
+              : 'No Nemesis Yet'
+          }
+          {
+            this.state.heroes
+              ? <Route path='/edit-villain/:villainId' render={() => <EditVillainContainer heroes={this.state.heroes} />} />
+              : 'No Nemesis Yet'
+          }
         </div>
       </Router>
     )

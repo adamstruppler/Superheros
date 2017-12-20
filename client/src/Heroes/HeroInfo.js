@@ -5,11 +5,12 @@ import {Link} from 'react-router-dom'
 const HeroInfo = ({hero}) => {
   return (
     <div>
-      <h1>{hero.name}</h1>
       <img src={hero.img} />
-      <h4>{hero.superPower}</h4>
-      <h4>{hero.universe}</h4>
-      <h4>{hero.nemesis}</h4>
+      <h1>{hero.name}</h1>
+      <h3>{hero.superPower}</h3>
+      <h3>{hero.universe}</h3>
+      <h2>Nemesis:</h2>
+      <h3>{hero.nemesis ? hero.nemesis.name : 'No Nemesis'}</h3>
       <Link to={`/edit-hero/${hero._id}`}>Edit Hero</Link>
     </div>
   )

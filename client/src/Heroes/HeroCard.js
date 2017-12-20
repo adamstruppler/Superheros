@@ -31,11 +31,12 @@ const HeroCard = ({deleteHero, hero, showUniqueHero}) => {
   return (
     <div style={style.constainer}>
       <div>
-        <h1 style={style.info}>{hero.name}</h1>
-        <h1 style={style.info}>{hero.superPower}</h1>
-        <h1 style={style.info}>{hero.universe}</h1>
-        <h1 style={style.info}>{hero.nemesis}</h1>
         <img style={style.info} src={hero.img} />
+        <h1 style={style.info}>{hero.name}</h1>
+        <h3 style={style.info}>{hero.superPower}</h3>
+        <h3 style={style.info}>{hero.universe}</h3>
+        <h2>Nemesis:</h2>
+        <h3 style={style.info}>{hero.nemesis ? hero.nemesis.name : 'No Nemesis'}</h3>
       </div>
       <div style={style.button}>
         <button onClick={() => deleteHero(hero)}>Delete</button>
