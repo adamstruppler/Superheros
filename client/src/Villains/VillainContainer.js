@@ -6,6 +6,7 @@ import $ from 'jquery'
 class VillainContainer extends Component {
 state = {
   villain: undefined,
+  comments: undefined,
   loading: true
 }
 
@@ -19,8 +20,7 @@ loadVillainFromServer = (id) => {
     url: `/api/villains/${id}`,
     method: 'GET'
   }).done((response) => {
-    console.log(response)
-    this.setState({villain: response.villain, loading: false})
+    this.setState({villain: response.villain, loading: false, comments: response.villain.comments})
   })
 }
 
@@ -29,7 +29,9 @@ render () {
     <div>
       {
         !this.state.loading
-          ? <VillainInfo villain={this.state.villain} />
+          ? <VillainInfo
+            villain={this.state.villain}
+            comments={this.state.comments} />
           : 'Cant find Villain'
       }
     </div>

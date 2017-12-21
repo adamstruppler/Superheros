@@ -5,7 +5,8 @@ import $ from 'jquery'
 
 class HeroContainer extends Component {
   state = {
-    hero: undefined
+    hero: undefined,
+    comments: undefined
   }
 
   componentDidMount () {
@@ -18,7 +19,7 @@ class HeroContainer extends Component {
       url: `/api/heroes/${id}`,
       method: 'GET'
     }).done((response) => {
-      this.setState({hero: response.hero})
+      this.setState({hero: response.hero, comments: response.hero.comments})
     })
   }
 
@@ -28,7 +29,9 @@ class HeroContainer extends Component {
         <h1>Hello from the hero side...</h1>
         {
           this.state.hero
-            ? <HeroInfo hero={this.state.hero} />
+            ? <HeroInfo
+              hero={this.state.hero}
+              comments={this.state.comments} />
             : 'No Hero'
         }
       </div>
