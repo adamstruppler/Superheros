@@ -6,7 +6,8 @@ import $ from 'jquery'
 class HeroContainer extends Component {
   state = {
     hero: undefined,
-    comments: undefined
+    comments: undefined,
+    text: undefined
   }
 
   componentDidMount () {
@@ -23,6 +24,21 @@ class HeroContainer extends Component {
     })
   }
 
+  submitComment = (e) => {
+    e.preventDefault()
+    const newComment = {text: this.state.text}
+    $.ajax({
+      url: `/api/heroes/${this.props.match.params.heroId}/comments`,
+      method: 'POST',
+      data: newComment
+    }).done((response) => {
+      this.loadHero(this.props.match.params.heroId)
+      this.setState({text: ''})
+    })
+  }
+
+  handleOnTextChange = (e) => this.setState({text: e.target.value})
+
   render () {
     return (
       <div>
@@ -31,7 +47,10 @@ class HeroContainer extends Component {
           this.state.hero
             ? <HeroInfo
               hero={this.state.hero}
-              comments={this.state.comments} />
+              comments={this.state.comments}
+              submitComment={this.submitComment}
+              handleOnTextChange={this.handleOnTextChange}
+              text={this.state.text} />
             : 'No Hero'
         }
       </div>

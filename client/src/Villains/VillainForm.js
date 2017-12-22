@@ -1,5 +1,6 @@
 import React from 'react'
 import Proptypes from 'prop-types'
+import Button from '../Component/Button'
 
 const VillainForm = ({onNameChange, onImageChange, onUniverseChange, onNemesisChange, handleSubmit, heroes}) => {
   return (
@@ -27,7 +28,7 @@ const VillainForm = ({onNameChange, onImageChange, onUniverseChange, onNemesisCh
           }
         </select>
       </div>
-      <button onClick={handleSubmit}>SUBMIT VILLAIN</button>
+      <Button handleClick={handleSubmit}>SUBMIT VILLAIN</Button>
     </form>
   )
 }

@@ -32,22 +32,23 @@ Router.route('/api/villains')
 
 Router.route('/api/villains/:villainId/comments')
   .post((req, res) => {
-    const newComment = req.body.text
+    const {text} = req.body
+    const newComment = {text}
 
     Comment(newComment).save((err, savedComment) => {
       if (err) {
-        res.json({error: err})
+        res.json({ error: err })
       } else {
         Villain.findById({_id: req.params.villainId}, (err, villain) => {
           if (err) {
-            res.json({error: err})
+            res.json({ error: err })
           } else {
             villain.comments.push(savedComment._id)
             villain.save((err, updatedVillain) => {
               if (err) {
-                res.json({error: err})
+                res.json({ error: err })
               } else {
-                res.json({msg: 'Success', data: updatedVillain})
+                res.json({ msg: 'SUCCESS', data: updatedVillain })
               }
             })
           }

@@ -17,14 +17,11 @@ class CreateHeroContainer extends Component {
 
   static propTypes = {
     loadHeroesFromServer: PropTypes.func.isRequired,
-    history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
+    villains: PropTypes.array.isRequired
   }
 
-  onNameChange = (e) => this.setState({name: e.target.value})
-  onSuperPowerChange = (e) => this.setState({superPower: e.target.value})
-  onImageChange = (e) => this.setState({img: e.target.value})
-  onUniverseChange = (e) => this.setState({universe: e.target.value})
-  onNemesisChange = (e) => this.setState({nemesis: e.target.value})
+  onChangeHandler = (e) => this.setState({[e.target.id]: e.target.value})
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -46,12 +43,8 @@ class CreateHeroContainer extends Component {
         <h3>Create Hero</h3>
         <HeroForm
           villains={this.props.villains}
-          onNameChange={this.onNameChange}
-          onImageChange={this.onImageChange}
-          onSuperPowerChange={this.onSuperPowerChange}
-          onNemesisChange={this.onNemesisChange}
-          onUniverseChange={this.onUniverseChange}
           handleSubmit={this.handleSubmit}
+          onChangeHandler={this.onChangeHandler}
         />
       </div>
     )

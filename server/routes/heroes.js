@@ -47,22 +47,23 @@ Router.route('/api/heroes')
 
 Router.route('/api/heroes/:heroId/comments')
   .post((req, res) => {
-    const newComment = req.body.text
+    const {text} = req.body
+    const newComment = {text}
 
     Comment(newComment).save((err, savedComment) => {
       if (err) {
-        res.json({error: err})
+        res.json({ error: err })
       } else {
         SuperHero.findById({_id: req.params.heroId}, (err, hero) => {
           if (err) {
-            res.json({error: err})
+            res.json({ error: err })
           } else {
             hero.comments.push(savedComment._id)
             hero.save((err, updatedHero) => {
               if (err) {
-                res.json({error: err})
+                res.json({ error: err })
               } else {
-                res.json({msg: 'Success', data: updatedHero})
+                res.json({ msg: 'SUCCESS', data: updatedHero })
               }
             })
           }

@@ -1,12 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import CardHeader from '../Component/CardHeader'
 import {Link} from 'react-router-dom'
+
+const style = {
+  container: {
+    border: '3px solid black',
+    display: 'flex',
+    flexDirection: 'column',
+    borderRadius: '10px',
+    margin: '2%',
+    background: '#2c3e50'
+  }
+}
 
 const VillainCard = ({deleteVillain, villain, showUniqueVillain}) => {
   return (
-    <div>
-      <img src={villain.img} />
-      <h1>{villain.name}</h1>
+    <div style={style.container}>
+      <CardHeader name={villain.name} img={villain.img} />
       <h3>{villain.universe}</h3>
       <h2>Nemesis:</h2>
       <h3>{villain.nemesis ? villain.nemesis.name : 'No Nemesis'}</h3>

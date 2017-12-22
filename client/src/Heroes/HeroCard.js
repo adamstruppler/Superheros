@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import CardHeader from '../Component/CardHeader'
 import {Link} from 'react-router-dom'
+import CardSubtitle from '../Component/CardSubtitle';
 
 const style = {
-  constainer: {
+  container: {
     border: '3px solid black',
     display: 'flex',
     flexDirection: 'column',
@@ -29,11 +31,10 @@ const style = {
 
 const HeroCard = ({deleteHero, hero, showUniqueHero}) => {
   return (
-    <div style={style.constainer}>
+    <div style={style.container}>
       <div>
-        <img style={style.info} src={hero.img} />
-        <h1 style={style.info}>{hero.name}</h1>
-        <h3 style={style.info}>{hero.superPower}</h3>
+        <CardHeader name={hero.name} img={hero.img} />
+        <CardSubtitle title={'Super Power:'} trait={hero.superPower} />
         <h3 style={style.info}>{hero.universe}</h3>
         <h2>Nemesis:</h2>
         <h3 style={style.info}>{hero.nemesis ? hero.nemesis.name : 'No Nemesis'}</h3>

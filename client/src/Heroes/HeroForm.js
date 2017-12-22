@@ -1,28 +1,29 @@
 import React from 'react'
 import Proptypes from 'prop-types'
+import Button from '../Component/Button'
 
-const HeroForm = ({onNameChange, onSuperPowerChange, onImageChange, onUniverseChange, onNemesisChange, handleSubmit, villains}) => {
+const HeroForm = ({onChangeHandler, handleSubmit, villains}) => {
   return (
     <form>
       <div>
         <label>Name</label>
-        <input type='text' onChange={onNameChange} />
+        <input type='text' onChange={onChangeHandler} id={'name'} />
       </div>
       <div>
         <label>SuperPower</label>
-        <input type='text' onChange={onSuperPowerChange} />
+        <input type='text' onChange={onChangeHandler} id={'superPower'} />
       </div>
       <div>
         <label>Image</label>
-        <input type='text' onChange={onImageChange} />
+        <input type='text' onChange={onChangeHandler} id={'img'} />
       </div>
       <div>
         <label>Universe</label>
-        <input type='text' onChange={onUniverseChange} />
+        <input type='text' onChange={onChangeHandler} id={'universe'} />
       </div>
       <div>
         <label>Nemesis</label>
-        <select onChange={onNemesisChange}>
+        <select onChange={onChangeHandler} id={'nemesis'}>
           <option>Nothing in here</option>
           {
             villains.map(villain => {
@@ -31,17 +32,13 @@ const HeroForm = ({onNameChange, onSuperPowerChange, onImageChange, onUniverseCh
           }
         </select>
       </div>
-      <button onClick={handleSubmit}>SUBMIT HERO</button>
+      <Button handleClick={handleSubmit}>Submit Hero</Button>
     </form>
   )
 }
 
 HeroForm.propTypes = {
-  onNameChange: Proptypes.func.isRequired,
-  onImageChange: Proptypes.func.isRequired,
-  onSuperPowerChange: Proptypes.func.isRequired,
-  onUniverseChange: Proptypes.func.isRequired,
-  onNemesisChange: Proptypes.func.isRequired,
+  onChangeHandler: Proptypes.func.isRequired,
   handleSubmit: Proptypes.func.isRequired,
   villains: Proptypes.array.isRequired
 }

@@ -7,7 +7,8 @@ class VillainContainer extends Component {
 state = {
   villain: undefined,
   comments: undefined,
-  loading: true
+  loading: true,
+  text: undefined
 }
 
 componentDidMount = () => {
@@ -24,6 +25,22 @@ loadVillainFromServer = (id) => {
   })
 }
 
+submitComment = (e) => {
+  e.preventDefault()
+  const newComment = {text: this.state.text}
+  $.ajax({
+    url: `/api/villains/${this.props.match.params.villainId}/comments`,
+    method: 'POST',
+    data: newComment
+  }).done((response) => {
+    console.log(response)
+    this.loadVillainFromServer(this.props.match.params.villainId)
+    this.setState({text: ''})
+  })
+}
+
+handleOnTextChange = (e) => this.setState({text: e.target.value})
+
 render () {
   return (
     <div>
@@ -31,7 +48,10 @@ render () {
         !this.state.loading
           ? <VillainInfo
             villain={this.state.villain}
-            comments={this.state.comments} />
+            comments={this.state.comments}
+            submitComment={this.submitComment}
+            handleOnTextChange={this.handleOnTextChange}
+            text={this.state.text} />
           : 'Cant find Villain'
       }
     </div>
